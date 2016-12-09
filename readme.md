@@ -10,6 +10,12 @@ The starting point is the Yeoman FountainJS Generator for Angular2 instead of th
 
 Install FountainJS with default options but make sure to choose, choose Typescript, and @angular/router since the tutorial code uses both.
 
+## Install
+
+git clone the repo
+
+Run ```npm install```
+
 ## Usage
 
 ```npm run build``` to build an optimized version of your application in /dist
@@ -19,6 +25,9 @@ Install FountainJS with default options but make sure to choose, choose Typescri
 ```npm run test:auto``` to launch your unit tests with Karma in watch mode
 
 ## TODO
+
+### Fix all those pesky lint warnings
+
 
 ### Fix Nav:
 
