@@ -3,12 +3,57 @@ import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 
 export class MockXHRBackend {
-  constructor() {
-  }
+
+_mediaItems = [
+    {
+      id: 1,
+      name: 'Hirebug',
+      medium: 'Series',
+      category: 'Science Fiction',
+      year: 2010,
+      watchedOn: 1294166565384,
+      isFavorite: false
+    },
+    {
+      id: 2,
+      name: 'The Small Tall',
+      medium: 'Movies',
+      category: 'Comedy',
+      year: 2015,
+      watchedOn: null,
+      isFavorite: true
+    }, {
+      id: 3,
+      name: 'The Redemption',
+      medium: 'Movies',
+      category: 'Action',
+      year: 2016,
+      watchedOn: null,
+      isFavorite: false
+    }, {
+      id: 4,
+      name: 'Hoopers',
+      medium: 'Series',
+      category: 'Drama',
+      year: null,
+      watchedOn: null,
+      isFavorite: true
+    }, {
+      id: 5,
+      name: 'Happy Joe: Cheery Road',
+      medium: 'Movies',
+      category: 'Action',
+      year: 2015,
+      watchedOn: 1457166565384,
+      isFavorite: false
+    }
+  ];
+
+  constructor() {}
 
   createConnection(request: Request) {
     var response = new Observable((responseObserver: Observer<Response>) => {
-      var responseData;
+      // var responseData;
       var responseOptions;
       switch (request.method) {
         case RequestMethod.Get:
@@ -16,7 +61,7 @@ export class MockXHRBackend {
             var medium;
             if (request.url.indexOf('?') >= 0) {
               medium = request.url.split('=')[1];
-              if (medium === 'undefined') medium = '';
+              if (medium === 'undefined') { medium = ''; }
             }
             var mediaItems;
             if (medium) {
@@ -29,7 +74,7 @@ export class MockXHRBackend {
               status: 200
             });
           } else {
-            var id = parseInt(request.url.split('/')[1]);
+            var id = parseInt(request.url.split('/')[1], 10);
             mediaItems = this._mediaItems.filter(mediaItem => mediaItem.id === id);
             responseOptions = new ResponseOptions({
               body: JSON.parse(JSON.stringify(mediaItems[0])),
@@ -44,7 +89,7 @@ export class MockXHRBackend {
           responseOptions = new ResponseOptions({ status: 201 });
           break;
         case RequestMethod.Delete:
-          var id = parseInt(request.url.split('/')[1]);
+          var id = parseInt(request.url.split('/')[1], 10);
           this._deleteMediaItem(id);
           responseOptions = new ResponseOptions({ status: 200 });
       }
@@ -52,12 +97,12 @@ export class MockXHRBackend {
       var responseObject = new Response(responseOptions);
       responseObserver.next(responseObject);
       responseObserver.complete();
-      return () => { };
+      return () => undefined;
     });
     return { response };
   }
 
-  _deleteMediaItem(id) {
+  _deleteMediaItem(id: any) {
     var mediaItem = this._mediaItems.find(mediaItem => mediaItem.id === id);
     var index = this._mediaItems.indexOf(mediaItem);
     if (index >= 0) {
@@ -70,49 +115,4 @@ export class MockXHRBackend {
       return Math.max.apply(Math, this._mediaItems.map(mediaItem => mediaItem.id)) + 1;
     }
   }
-
-  _mediaItems = [
-    {
-      id: 1,
-      name: "Hirebug",
-      medium: "Series",
-      category: "Science Fiction",
-      year: 2010,
-      watchedOn: 1294166565384,
-      isFavorite: false
-    },
-    {
-      id: 2,
-      name: "The Small Tall",
-      medium: "Movies",
-      category: "Comedy",
-      year: 2015,
-      watchedOn: null,
-      isFavorite: true
-    }, {
-      id: 3,
-      name: "The Redemption",
-      medium: "Movies",
-      category: "Action",
-      year: 2016,
-      watchedOn: null,
-      isFavorite: false
-    }, {
-      id: 4,
-      name: "Hoopers",
-      medium: "Series",
-      category: "Drama",
-      year: null,
-      watchedOn: null,
-      isFavorite: true
-    }, {
-      id: 5,
-      name: "Happy Joe: Cheery Road",
-      medium: "Movies",
-      category: "Action",
-      year: 2015,
-      watchedOn: 1457166565384,
-      isFavorite: false
-    }
-  ];
 }

@@ -21,7 +21,7 @@ export class MediaItemListComponent {
     this.paramsSubscription = this.activatedRoute.params
       .subscribe(params => {
         let medium = params['medium'];
-        if(medium.toLowerCase() === 'all') {
+        if (medium.toLowerCase() === 'all') {
           medium = '';
         }
         this.getMediaItems(medium);
@@ -32,14 +32,14 @@ export class MediaItemListComponent {
     this.paramsSubscription.unsubscribe();
   }
 
-  onMediaItemDelete(mediaItem) {
+  onMediaItemDelete(mediaItem: any) {
     this.mediaItemService.delete(mediaItem)
       .subscribe(() => {
         this.getMediaItems(this.medium);
       });
   }
 
-  getMediaItems(medium) {
+  getMediaItems(medium: any) {
     this.medium = medium;
     this.mediaItemService.get(medium)
       .subscribe(mediaItems => {

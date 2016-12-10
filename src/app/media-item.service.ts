@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 export class MediaItemService {
   constructor(private http: Http) {}
 
-  get(medium) {
+  get(medium: any) {
     let searchParams = new URLSearchParams();
     searchParams.append('medium', medium);
     return this.http.get('mediaitems', { search: searchParams })
@@ -14,14 +14,14 @@ export class MediaItemService {
         return response.json().mediaItems;
       });
   }
-  
-  add(mediaItem) {
+
+  add(mediaItem: any) {
     return this.http.post('mediaitems', mediaItem)
-      .map(response => {});
+      .map(response => undefined);
   }
-  
-  delete(mediaItem) {
+
+  delete(mediaItem: any) {
     return this.http.delete(`mediaitems/${mediaItem.id}`)
-      .map(response => {});
+      .map(response => undefined);
   }
 }
