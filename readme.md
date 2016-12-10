@@ -2,7 +2,7 @@
 
 ## About
 
-This app is built following the Lynda.com course: Angular2 Essential Training.
+This is a list app which allows users to list media they 
 
 The starting point is the Yeoman FountainJS Generator for Angular2 instead of the Tutorial code.
 
@@ -26,18 +26,14 @@ Run ```npm install```
 
 ## TODO
 
-### Fix all those pesky lint warnings
-
-
 ### Fix Nav:
 
 FountainJS build and the Tutorial build are set up differently with component nesting and routing...
-So in the tutorial the navigation is ever present
-In the Fountain app the nav is only on the front page..
+So in the tutorial the navigation is ever present, while inn the Fountain app the nav is only on the front page.
 
-### Build: Dist is broken
+### ```npm run build``` is broken
 
 Build doesn't copy over the html files to dist.
 
-[Support on Slack](https://fountain-slack.herokuapp.com)
+Check Out: [Support on Slack](https://fountain-slack.herokuapp.com)
 
