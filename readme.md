@@ -1,6 +1,6 @@
 # Angular 2 Essential Training
 
-[![Building a Website with Node & ExpressJS](hero.jpg)](https://www.github.html)
+[![Hero Title](hero.jpg)](https://www.github.html)
 
 
 ## About
