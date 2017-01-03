@@ -22,8 +22,8 @@ export const routes: Routes = [
     path: ':medium',
     component: MediaItemListComponent
   },
-  { path: '', 
-  redirectTo: '/:all', 
+  { path: '',
+  redirectTo: '/:all',
   pathMatch: 'full' }
 ];
 

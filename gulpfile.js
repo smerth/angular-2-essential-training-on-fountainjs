@@ -4,6 +4,8 @@ const browserSync = require('browser-sync');
 
 const conf = require('./conf/gulp.conf');
 
+const deploy = require('gulp-gh-pages');
+
 // Load some files into the registry
 const hub = new HubRegistry([conf.path.tasks('*.js')]);
 
@@ -18,6 +20,7 @@ gulp.task('serve:dist', gulp.series('default', 'browsersync:dist'));
 gulp.task('default', gulp.series('clean', 'build'));
 gulp.task('watch', watch);
 
+
 function reloadBrowserSync(cb) {
   browserSync.reload();
   cb();
@@ -27,3 +30,11 @@ function watch(done) {
   gulp.watch(conf.path.tmp('index.html'), reloadBrowserSync);
   done();
 }
+
+/**
+ * Push build to gh-pages
+ */
+gulp.task('deploy', function () {
+  return gulp.src("./dist/**/*")
+    .pipe(deploy())
+});

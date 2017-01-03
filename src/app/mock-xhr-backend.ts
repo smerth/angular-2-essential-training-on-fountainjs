@@ -49,7 +49,7 @@ _mediaItems = [
     }
   ];
 
-  constructor() {}
+//  constructor() {}
 
   createConnection(request: Request) {
     var response = new Observable((responseObserver: Observer<Response>) => {
