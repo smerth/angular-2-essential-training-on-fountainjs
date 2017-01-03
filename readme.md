@@ -37,3 +37,4 @@ Build doesn't copy over the html files to dist.
 
 Check Out: [Support on Slack](https://fountain-slack.herokuapp.com)
 
+ng-class on media list and media items is not working -> returning an empty object..?

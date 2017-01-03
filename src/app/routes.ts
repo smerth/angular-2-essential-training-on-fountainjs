@@ -2,14 +2,14 @@
 
 import {Component} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AppComponent} from './app.component';
+// import {AppComponent} from './app.component';
 
 import {MediaItemFormComponent} from './media-item-form.component';
 import {MediaItemListComponent} from './media-item-list.component';
 
 @Component({
   selector: 'fountain-root',
-  template: '<router-outlet></router-outlet>'
+  template: '<fountain-app></fountain-app>'
 })
 export class RootComponent {}
 
@@ -22,11 +22,9 @@ export const routes: Routes = [
     path: ':medium',
     component: MediaItemListComponent
   },
-  {
-    path: '',
-    pathMatch: 'full',
-    component: AppComponent
-  },
+  { path: '', 
+  redirectTo: '/:all', 
+  pathMatch: 'full' }
 ];
 
 export const routing = RouterModule.forRoot(routes);

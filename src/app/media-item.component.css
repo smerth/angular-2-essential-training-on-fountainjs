@@ -9,8 +9,9 @@
   color: #bdc2c5;
 }
 h2 {
-  font-size: 1.6em;
+  font-size: 1.5em;
   flex: 1;
+  margin: 0;
 }
 :host.medium-movies {
   border-color: #53ace4;

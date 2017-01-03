@@ -1,9 +1,6 @@
 
 <header 
     [ngClass]="{'medium-movies':medium === 'Movies', 'medium-series':medium === 'Series'}">
-    <h1>Media Watch List</h1>
-    <p class="description">Keeping track of the media I want to watch.</p>
-
     <h2>{{medium}}</h2>
     <div>{{ mediaItems | fountainCategoryList }}</div>
 </header>
