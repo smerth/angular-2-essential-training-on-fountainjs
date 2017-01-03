@@ -1,5 +1,8 @@
 # Angular 2 Essential Training
 
+[![Building a Website with Node & ExpressJS](hero.jpg)](https://www.github.html)
+
+
 ## About
 
 This is a list app which allows users to list media they 
